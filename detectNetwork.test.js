@@ -297,9 +297,22 @@ describe("Switch", function() {
   var should = chai.should();
   var lengthTest = function(prefix) {
     if(prefix.length == 4) {
-      detectNetwork(prefix + "222233334444").should.equal("Switch");
-      detectNetwork(prefix + )
+      detectNetwork(prefix + "222233334444").should.equal("Switch"); //length of 16
+      detectNetwork(prefix + "22223333444412").should.equal("Switch"); //length of 18
+      detectNetwork(prefix + "222233334444123").should.equal("Switch"); //length of 19
+    } else if(prefix.length == 6) {
+      detectNetwork(prefix + "2222333312").should.equal("Switch"); //length of 16
+      detectNetwork(prefix + "222233331234").should.equal("Switch"); //length of 18
+      detectNetwork(prefix + "2222333312345").should.equal("Switch"); //length of 19
     }
   };
 
+  it("has a prefix of 4903 and a length of 16, 18, or 19", function() {lengthTest("4903")});
+  it("has a prefix of 4905 and a length of 16, 18, or 19", function() {lengthTest("4905")});
+  it("has a prefix of 4911 and a length of 16, 18, or 19", function() {lengthTest("4911")});
+  it("has a prefix of 4936 and a length of 16, 18, or 19", function() {lengthTest("4936")});
+  it("has a prefix of 564182 and a length of 16, 18, or 19", function() {lengthTest("564182")});
+  it("has a prefix of 633110 and a length of 16, 18, or 19", function() {lengthTest("633110")});
+  it("has a prefix of 6759 and a length of 16, 18, or 19", function() {lengthTest("6759")});
+  it("has a prefix of 6333 and a length of 16, 18, or 19", function() {lengthTest("6333")});
 });
